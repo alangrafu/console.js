@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Big Datum</title>
+  <link href="console.css" media="all" rel="stylesheet" type="text/css" />
+ </head>
+ <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="console.js"></script>
+<script>
+Console.init("#mylog");
+Console.log("first log");
+Console.log("second, with ID", "ID01");
+for(var i=0; i < 10; i++){
+	Console.log("I will log "+(10-i)+" more events", "Iterator");
+}
+</script>
+<button onclick="Console.log('button clicked!')">Click me!</button>
+<button onclick="Console.log('the other button was clicked!')">Another button</button>
+<h4>Example</h4>
+<pre>
+Console.init("#mylog");
+Console.log("first log");
+Console.log("second, with ID", "ID01");
+for(var i=0; i < 10; i++){
+	Console.log("I will log "+(10-i)+" more events", "Iterator");
+}
+</pre>
+ </body>
+</html>
