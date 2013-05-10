@@ -8,21 +8,14 @@
  <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="console.js"></script>
-<script>
-Console.init("#mylog");
-Console.log("first log");
-Console.log("second, with ID", "ID01");
-for(var i=0; i < 3; i++){
-	Console.log("I will log "+(2-i)+" more events", "Iterator");
-}
-</script>
+
 <h1>Console.js Demo</h1>
 Repository: <a href='https://github.com/alangrafu/console.js'>https://github.com/alangrafu/console.js</a>
 
 <h1>Buttons</h1>
 <p>Press the buttons</p>
-<button onclick="Console.log('button clicked!')">Click me!</button>
-<button onclick="Console.log('the other button was clicked!')">Another button</button>
+<button onClick="foo()" class="log btn btn-click" id="clickMe">Click me!</button>
+<button class="log btn btn-another" >Another button</button>
 <h1>Code</h1>
 <pre>
 //Include jquery, console.js and console.css
@@ -37,5 +30,21 @@ for(var i=0; i < 3; i++){
 
 &lt;button onclick="Console.log('the other button was clicked!')"&gt;Another button&lt;/button&gt;
 </pre>
+
+
+<script>
+Console.init("#mylog");
+Console.log("first log");
+Console.log("second, with ID", "ID01");
+for(var i=0; i < 3; i++){
+	Console.log("I will log "+(2-i)+" more events", "Iterator");
+}
+
+function foo(){
+	alert('foo!');
+}
+
+</script>
+
  </body>
 </html>
