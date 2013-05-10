@@ -31,6 +31,6 @@ Console = {
 		var source = (s != undefined)?s+": " : "";
 	    $(self.divId).append("<p> "+source+msg+"</p>");   
 		var n = $(self.divId).get(0).scrollHeight;
-		$(self.divId).animate({ scrollTop: n },'10'); 
+		$(self.divId).animate({ scrollTop: n }); 
 	}
 }

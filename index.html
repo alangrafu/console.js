@@ -12,20 +12,29 @@
 Console.init("#mylog");
 Console.log("first log");
 Console.log("second, with ID", "ID01");
-for(var i=0; i < 10; i++){
-	Console.log("I will log "+(10-i)+" more events", "Iterator");
+for(var i=0; i < 3; i++){
+	Console.log("I will log "+(2-i)+" more events", "Iterator");
 }
 </script>
+<h1>Console.js Demo</h1>
+Repository: <a href='https://github.com/alangrafu/console.js'>https://github.com/alangrafu/console.js</a>
+
+<h1>Buttons</h1>
+<p>Press the buttons</p>
 <button onclick="Console.log('button clicked!')">Click me!</button>
 <button onclick="Console.log('the other button was clicked!')">Another button</button>
-<h4>Example</h4>
+<h1>Code</h1>
 <pre>
 Console.init("#mylog");
 Console.log("first log");
 Console.log("second, with ID", "ID01");
-for(var i=0; i < 10; i++){
-	Console.log("I will log "+(10-i)+" more events", "Iterator");
+for(var i=0; i < 3; i++){
+	Console.log("I will log "+(2-i)+" more events", "Iterator");
 }
+
+
+
+&lt;button onclick="Console.log('the other button was clicked!')"&gt;Another button&lt;/button&gt;
 </pre>
  </body>
 </html>
