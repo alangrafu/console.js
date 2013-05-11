@@ -1,16 +1,3 @@
-function setLogs(){
-	var toLog = $(".log");//document.getElementsByClassName('log');
-	for(var i=0; i<toLog.length; i++){
-		if(toLog[i].onclick != null){
-			var old = toLog[i].onclick;
-			toLog[i].onclick = toLog[0].onclick = function (event) {Console.logElement(this); old();};
-		}
-		else {
-			toLog[i].onclick = toLog[i].onclick = function (event) {Console.logElement(this);};
-		}
-	}	
-}
-
 Console = {
 	divId: "#consolediv",
 	parentId: "body",
@@ -38,22 +25,12 @@ Console = {
 				$(this).html("Hide log window");
 			}
 		});
-		setLogs();
 	},
-	
 	log: function(msg, s){
 		var self = this;
 		var source = (s != undefined)?s+": " : "";
 	    $(self.divId).append("<p> "+source+msg+"</p>");   
 		var n = $(self.divId).get(0).scrollHeight;
 		$(self.divId).animate({ scrollTop: n }); 
-	},
-	
-	logElement: function(element){
-		var id = "&lt;Id not set&gt;";
-		if(element.id !== "") id = element.id;
-		Console.log('clicked.', id + '('+element.tagName+')');
-	}	
+	}
 }
-
-
