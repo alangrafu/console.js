@@ -1,21 +1,36 @@
 function setLogs(){
-	var toLog = $(".log");//document.getElementsByClassName('log');
+	for(key in config['eventsByClass']) {
+		setLogForBehaviour(key, config['eventsByClass'][key]);
+	}
+}
+
+function setLogForBehaviour(key, config){
+	for(index in config){	
+		for(className in config[index])
+			setLogFor(key, className, config[index][className]);
+	}
+}
+
+function setLogFor(action, className, message){
+	var toLog = $('.'+className);	
 	for(var i=0; i<toLog.length; i++){
-		if(toLog[i].onclick != null){
-			var old = toLog[i].onclick;
-			toLog[i].onclick = toLog[0].onclick = function (event) {Console.logElement(this); old();};
+		var toLogElement = toLog[i];
+		//alert('action='+action+'; class='+className+"; message="+message+"==>"+toLogElement);
+		if(toLogElement[action] != null){
+			var old = toLogElement[action];
+			toLogElement[action] = function (event) {Console.logElement(this, message); old();};
 		}
-		else {
-			toLog[i].onclick = toLog[i].onclick = function (event) {Console.logElement(this);};
+		else{
+			toLogElement[action] = function (event) {Console.logElement(this, message);};
 		}
-	}	
+	}
 }
 
 Console = {
 	divId: "#consolediv",
 	parentId: "body",
 	loglevel: 1, //for future use
-	init: function(divId, parentId){
+	init: function(divId, parentId, config){
 		var self = this;
 		if(parentId != undefined){
 			self.parentId = parentId;
@@ -38,7 +53,7 @@ Console = {
 				$(this).html("Hide log window");
 			}
 		});
-		setLogs();
+		setLogs(config);
 	},
 	
 	log: function(msg, s){
@@ -49,10 +64,10 @@ Console = {
 		$(self.divId).animate({ scrollTop: n }); 
 	},
 	
-	logElement: function(element){
+	logElement: function(element, message){
 		var id = "&lt;Id not set&gt;";
 		if(element.id !== "") id = element.id;
-		Console.log('clicked.', id + '('+element.tagName+')');
+		Console.log(message, id + '('+element.tagName+')');
 	}	
 }
 

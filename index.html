@@ -14,8 +14,8 @@ Repository: <a href='https://github.com/alangrafu/console.js'>https://github.com
 
 <h1>Buttons</h1>
 <p>Press the buttons</p>
-<button onClick="foo()" class="log btn btn-click" id="clickMe">Click me!</button>
-<button class="log btn btn-another" >Another button</button>
+<button onClick="foo()" class="class1 class3" id="clickMe">Click me!</button>
+<button class="class2" >Another button</button>
 <h1>Code</h1>
 <pre>
 //Include jquery, console.js and console.css
@@ -33,7 +33,13 @@ for(var i=0; i < 3; i++){
 
 
 <script>
-Console.init("#mylog");
+var config = 
+{"eventsByClass":{
+	"onclick": [{"class1": "message1"}, {"class2": "message2"}],
+	"onmouseover": [{"class3": "message3"}]
+}};
+
+Console.init("#mylog", "body", config);
 Console.log("first log");
 Console.log("second, with ID", "ID01");
 for(var i=0; i < 3; i++){
