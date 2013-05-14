@@ -8,25 +8,33 @@
  <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="console.js"></script>
-<script>
-Console.init("#mylog");
-Console.log("first log");
-Console.log("second, with ID", "ID01");
-for(var i=0; i < 3; i++){
-	Console.log("I will log "+(2-i)+" more events", "Iterator");
-}
-</script>
+
 <h1>Console.js Demo</h1>
 Repository: <a href='https://github.com/alangrafu/console.js'>https://github.com/alangrafu/console.js</a>
 
 <h1>Buttons</h1>
 <p>Press the buttons</p>
-<button onclick="Console.log('button clicked!')">Click me!</button>
-<button onclick="Console.log('the other button was clicked!')">Another button</button>
+<button class="class1" id="clickMe">Click me!</button>
+<div class="class2"  style="color:white;background:red">Mouse over!!!</div>
 <h1>Code</h1>
 <pre>
 //Include jquery, console.js and console.css
-Console.init("#mylog");
+
+//Assuming you have the following HTML
+&lt;button class="class1" id="clickMe"&gt;Click me!&lt;/button&gt;
+&lt;div class="class2" style="color:white;background:red"&gt;Mouse over!!!&lt;/div&gt;
+
+//Define which elements under which events should be logged
+var config = {"events":{
+			"click": [".class1"],
+			"mouseover": [".class2"]
+		}
+};
+
+//Then initialize the Console once the body is loaded.
+Console.init("#mylog", "body", config);
+
+//You can also specify logging programatically
 Console.log("first log");
 Console.log("second, with ID", "ID01");
 for(var i=0; i < 3; i++){
@@ -34,8 +42,28 @@ for(var i=0; i < 3; i++){
 }
 
 
-
-&lt;button onclick="Console.log('the other button was clicked!')"&gt;Another button&lt;/button&gt;
 </pre>
+
+
+<script>
+var config = {"events":{
+				         "click": [".class1"],
+				         "mouseover": [".class2"]
+			           }
+			 };
+
+Console.init("#mylog", "body", config);
+Console.log("first log");
+Console.log("second, with ID", "ID01");
+for(var i=0; i < 3; i++){
+	Console.log("I will log "+(2-i)+" more events", "Iterator");
+}
+
+function foo(){
+	alert('foo!');
+}
+
+</script>
+
  </body>
 </html>
