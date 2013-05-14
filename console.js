@@ -1,31 +1,3 @@
-function setLogs(){
-	for(key in config['eventsByClass']) {
-		setLogForBehaviour(key, config['eventsByClass'][key]);
-	}
-}
-
-function setLogForBehaviour(key, config){
-	for(index in config){	
-		for(className in config[index])
-			setLogFor(key, className, config[index][className]);
-	}
-}
-
-function setLogFor(action, className, message){
-	var toLog = $('.'+className);	
-	for(var i=0; i<toLog.length; i++){
-		var toLogElement = toLog[i];
-		//alert('action='+action+'; class='+className+"; message="+message+"==>"+toLogElement);
-		if(toLogElement[action] != null){
-			var old = toLogElement[action];
-			toLogElement[action] = function (event) {Console.logElement(this, message); old();};
-		}
-		else{
-			toLogElement[action] = function (event) {Console.logElement(this, message);};
-		}
-	}
-}
-
 Console = {
 	divId: "#consolediv",
 	parentId: "body",
@@ -72,7 +44,6 @@ Console = {
 				$(this).html("Hide log window");
 			}
 		});
-		setLogs(config);
 	},	
 	log: function(msg, s){
 		var self = this;
@@ -82,5 +53,3 @@ Console = {
 		$(self.divId).animate({ scrollTop: n }); 
 	}	
 }
-
-

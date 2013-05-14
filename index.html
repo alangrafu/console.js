@@ -15,14 +15,14 @@ Repository: <a href='https://github.com/alangrafu/console.js'>https://github.com
 <h1>Buttons</h1>
 <p>Press the buttons</p>
 <button class="class1" id="clickMe">Click me!</button>
-<div class="class2"  style="color:white;background:red">Mouse over!!!</div>
+<div class="class2"  style="color:white;background:red;width:200px;height:50px;">Mouse over!!!</div>
 <h1>Code</h1>
 <pre>
 //Include jquery, console.js and console.css
 
 //Assuming you have the following HTML
 &lt;button class="class1" id="clickMe"&gt;Click me!&lt;/button&gt;
-&lt;div class="class2" style="color:white;background:red"&gt;Mouse over!!!&lt;/div&gt;
+&lt;div class="class2" style="color:white;background:red;width:200px;height:50px;"&gt;Mouse over!!!&lt;/div&gt;
 
 //Define which elements under which events should be logged
 var config = {"events":{
@@ -41,7 +41,6 @@ for(var i=0; i < 3; i++){
 	Console.log("I will log "+(2-i)+" more events", "Iterator");
 }
 
-
 </pre>
 
 
@@ -58,11 +57,6 @@ Console.log("second, with ID", "ID01");
 for(var i=0; i < 3; i++){
 	Console.log("I will log "+(2-i)+" more events", "Iterator");
 }
-
-function foo(){
-	alert('foo!');
-}
-
 </script>
 
  </body>
